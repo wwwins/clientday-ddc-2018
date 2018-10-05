@@ -1,0 +1,19 @@
+{
+  "name": "isobar-clientday-2018",
+  "version": "1.0.0",
+  "description": "isobar client day 2018",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "debug": "DEBUG=express:* node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "isobar",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mini.css": "^3.0.0",
+    "puppeteer": "^1.8.0"
+  }
+}
