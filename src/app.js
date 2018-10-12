@@ -4,10 +4,10 @@ const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 const iphoneX = devices['iPhone X'];
 
-const window_w = 1920;
-const window_h = 1360;  // toolbar height: 80
-// const window_w = 2560;
-// const window_h = 1440;
+// const window_w = 1920;
+// const window_h = 1360;  // toolbar height: 80
+const window_w = 2560;
+const window_h = 1440;
 let browser;
 const urls_a = [
     'http://localhost:8080/ddc/a-1',
@@ -68,8 +68,9 @@ try {
         browser = await puppeteer.launch({
             headless: false,
             slowMo: 100,
-            args: ['--disable-infobars', `--window-size=${window_w},${window_h}`]    // hide "Chrome is being controlled by ..."
-            // args: ['--kiosk', '--disable-infobars', `--window-size=${window_w},${window_h}`]
+            // args: ['--window-position=0,0','--disable-infobars', `--window-size=${window_w},${window_h}`]    // hide "Chrome is being controlled by ..."
+            args: ['--kiosk', '--disable-infobars', `--window-size=${window_w},${window_h}`]
+            //args: ['--kiosk', '--disable-infobars', `--window-size=${window_w},${window_h}`, '--app=http://localhost:8080/']
             // args: ['--start-fullscreen']
         });
         // urls.forEach(l => {
@@ -101,6 +102,7 @@ app.get('/id/:id', (req, res) => {
     const id = req.params.id;
     res.send('success');
     console.log('rfid:',id);
+    keepOneTab();
     if (id%2==1) {
         urls_a.forEach(l => {
             openTab(l);
