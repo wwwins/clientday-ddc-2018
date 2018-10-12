@@ -9,6 +9,8 @@ const iphoneX = devices['iPhone X'];
 const window_w = 2560;
 const window_h = 1440;
 let browser;
+let cnt = 0;
+
 const urls_a = [
     'http://localhost:8080/ddc/a-1',
     'http://localhost:8080/ddc/a-2',
@@ -103,16 +105,27 @@ app.get('/id/:id', (req, res) => {
     res.send('success');
     console.log('rfid:',id);
     keepOneTab();
-    if (id%2==1) {
+    if (cnt%4==0) {
         urls_a.forEach(l => {
             openTab(l);
         })
     }
-    else {
+    if (cnt%4==1) {
         urls_b.forEach(l => {
             openTab(l);
         })
     }
+    if (cnt%4==2) {
+        urls_c.forEach(l => {
+            openTab(l);
+        })
+    }
+    if (cnt%4==3) {
+        urls_d.forEach(l => {
+            openTab(l);
+        })
+    }
+    cnt++;
 })
 
 app.get('/ddc/:pid', (req, res) => {
