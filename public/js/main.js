@@ -1,5 +1,5 @@
 (function(){
-    document.getElementById('back_home').onclick = function() {
+    document.getElementsByClassName('btn--back').onclick = function() {
         location.href = '/';
     }
 })();
