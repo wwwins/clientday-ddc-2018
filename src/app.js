@@ -1,3 +1,10 @@
+/**
+ * Copyright 2018 isobar. All Rights Reserved.
+ *
+ */
+
+'use strict';
+
 const express = require('express');
 const http = require('http');
 const puppeteer = require('puppeteer');
@@ -7,9 +14,14 @@ const iphoneX = devices['iPhone X'];
 // const window_w = 1920;
 // const window_h = 1360;  // toolbar height: 80
 const window_w = 2560;
-const window_h = 1440;
+const window_h = 1362;
+
+const TYPE_A = '2608663075';
+const TYPE_B = '3483355998';
+const TYPE_C = '4256377746';
+const TYPE_D = '3483394798';
+
 let browser;
-let cnt = 0;
 
 const urls_a = [
     'http://localhost:8080/ddc/a-1',
@@ -105,27 +117,26 @@ app.get('/id/:id', (req, res) => {
     res.send('success');
     console.log('rfid:',id);
     keepOneTab();
-    if (cnt%4==0) {
+    if (id==TYPE_A) {
         urls_a.forEach(l => {
             openTab(l);
         })
     }
-    if (cnt%4==1) {
+    if (id==TYPE_B) {
         urls_b.forEach(l => {
             openTab(l);
         })
     }
-    if (cnt%4==2) {
+    if (id==TYPE_C) {
         urls_c.forEach(l => {
             openTab(l);
         })
     }
-    if (cnt%4==3) {
+    if (id==TYPE_D) {
         urls_d.forEach(l => {
             openTab(l);
         })
     }
-    cnt++;
 })
 
 app.get('/ddc/:pid', (req, res) => {
