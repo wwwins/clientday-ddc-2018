@@ -16,10 +16,10 @@ const iphoneX = devices['iPhone X'];
 const window_w = 2560;
 const window_h = 1362;
 
-const TYPE_A = '2608663075';
-const TYPE_B = '3483355998';
-const TYPE_C = '4256377746';
-const TYPE_D = '3483394798';
+const TYPE_A = '2608663075'; // girl
+const TYPE_B = '3483355998'; // man
+const TYPE_C = '4256377746'; // woman
+const TYPE_D = '3483394798'; // dad
 
 let browser;
 
